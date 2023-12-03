@@ -28,11 +28,43 @@
   color: #61dafb;
 }
 
+/* .navbar {
+  background-color: white;
+  padding: 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
+
+.nav-links {
+  margin-right: 20px;
+  justify-content: space-between;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+/* App.css */
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.navbar {
+  background-color: black;
+  box-shadow: 0 2px 4px rgba(red, green, blue, alpha);
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
 }
