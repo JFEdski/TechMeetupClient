@@ -52,8 +52,6 @@
   }
 }
 
-/* App.css */
-
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
@@ -67,4 +65,18 @@ body {
   justify-content: space-between;
   align-items: center;
   color: #fff;
+}
+
+.logo {
+  width: 50px;
+  position: relative;
+}
+
+.nav-links {
+  text-decoration: none;
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  font-weight: bold;
+  transition: color 0.3s;
 }
