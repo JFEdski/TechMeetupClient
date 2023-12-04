@@ -4,6 +4,7 @@ import Navbar from './components/navbar/Navbar';
 import CreateEvent from './components/event/CreateEvent';
 import Login from './components/auth/login/Login';
 import Signup from './components/auth/signup/Signup';
+import Home from './components/Home';
 // import Explore from './components/Explore';
 import './App.css';
 
@@ -14,7 +15,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<Home />} />
           <Route path="/create" element={<CreateEvent />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
