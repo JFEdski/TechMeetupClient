@@ -1,163 +1,40 @@
-import React, { useState } from 'react'; 
 
-  
+function Filter (){
+  return(
+<div class="btn-group">
+<form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Location
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Language
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Tags
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+</div>
+  )
+}
+export default Filter;
 
-const EventFilter = ({ events }) => { 
 
-  const [filters, setFilters] = useState({ 
-
-    time: '', 
-
-    location: '', 
-
-    date: '', 
-
-    hashtag: '', 
-
-    language: ", 
-
-  }); 
-
-  
-
-  const filteredEvents = events.filter(event => { 
-
-    const timeMatch = !filters.time || event.time === filters.time; 
-
-    const locationMatch = !filters.location || event.location === filters.location; 
-
-    const dateMatch = !filters.date || event.date === filters.date; 
-
-    const hashtagMatch = 
-
-      !filters.hashtag || 
-
-      event.hashtags.some(hashtag => hashtag.toLowerCase() === filters.hashtag.toLowerCase()); 
-
-    const languageMatch = !filters.language || event.language === filters.language; 
-
-  
-
-    return timeMatch && locationMatch && dateMatch && hashtagMatch && languageMatch; 
-
-  }); 
-
-  
-
-  const handleFilterChange = (filterType, value) => { 
-
-    setFilters(prevFilters => ({ ...prevFilters, [filterType]: value })); 
-
-  }; 
-
-  
-
-  return ( 
-
-    <div> 
-
-      <label> 
-
-        Time: 
-
-        <input 
-
-          type="text" 
-
-          value={filters.time} 
-
-          onChange={e => handleFilterChange('time', e.target.value)} 
-
-        /> 
-
-      </label> 
-
-      <label> 
-
-        Location: 
-
-        <input 
-
-          type="text" 
-
-          value={filters.location} 
-
-          onChange={e => handleFilterChange('location', e.target.value)} 
-
-        /> 
-
-      </label> 
-
-      <label> 
-
-        Date: 
-
-        <input 
-
-          type="text" 
-
-          value={filters.date} 
-
-          onChange={e => handleFilterChange('date', e.target.value)} 
-
-        /> 
-
-      </label> 
-
-      <label> 
-
-        Hashtag: 
-
-        <input 
-
-          type="text" 
-
-          value={filters.hashtag} 
-
-          onChange={e => handleFilterChange('hashtag', e.target.value)} 
-
-        /> 
-
-      </label> 
-
-      <label> 
-
-        Language: 
-
-        <input 
-
-          type="text" 
-
-          value={filters.language} 
-
-          onChange={e => handleFilterChange('language', e.target.value)} 
-
-        /> 
-
-      </label> 
-
-  
-
-      <ul> 
-
-        {filteredEvents.map(event => ( 
-
-          <li key={event.id}> 
-
-            {event.name} - {event.location} - {event.date} - {event.time} - {event.hashtags.join(', ')} - {event.language} 
-
-          </li> 
-
-        ))} 
-
-      </ul> 
-
-    </div> 
-
-  ); 
-
-}; 
-
-  
-
-export default EventFilter; 
