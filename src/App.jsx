@@ -1,13 +1,3 @@
-
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/navbar/Navbar";
-import CreateEvent from "./components/event/CreateEvent";
-import Login from "./components/auth/login/Login";
-import Signup from "./components/auth/signup/Signup";
-import Home from "./components/Home";
-import EventMap from "./components/map/EventMap";
-
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/navbar/Navbar';
