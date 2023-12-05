@@ -22,7 +22,6 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/filter" element={<Filter />} />
         </Routes>
-        <EventMap />
       </BrowserRouter>
     </div>
   );
