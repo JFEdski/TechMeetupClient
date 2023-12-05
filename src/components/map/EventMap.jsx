@@ -7,13 +7,14 @@ const mapContainerStyle = {
   height: "50vh",
 };
 const center = {
-  lat: 39.7392, // default latitude
-  lng: 104.9903, // default longitude
+  lat: 39.742043,
+  lng: -104.991531,
 };
 
 function EventMap() {
+  const YOUR_API_KEY = "AIzaSyB3EqAnBwOEn-MgV9tekQmJqquq6_-tfPg";
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "YOUR_API_KEY",
+    googleMapsApiKey: YOUR_API_KEY,
     libraries,
   });
 
@@ -27,7 +28,11 @@ function EventMap() {
 
   return (
     <div>
-      <GoogleMap mapContainerStyle={mapContainerStyle} zoom={5} center={center}>
+      <GoogleMap
+        mapContainerStyle={mapContainerStyle}
+        zoom={10}
+        center={center}
+      >
         <Marker position={center} />
       </GoogleMap>
     </div>
