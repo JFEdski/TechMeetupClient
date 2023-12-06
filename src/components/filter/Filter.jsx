@@ -1,4 +1,5 @@
 import React from 'react';
+import EventCard from '../event/EventCard';
 
 const events = [
   {
@@ -19,6 +20,12 @@ const events = [
     location: "London",
     dateTime: "2023-12-20T09:00:00"
   },
+  {
+    name: "Event 4",
+    language: "JavaScript",
+    location: "Quebec",
+    dateTime: "2023-12-20T09:00:00"
+  }
   // Add more events here...
 ];
 
@@ -65,7 +72,7 @@ class Filter extends React.Component {
     const { filteredEvents } = this.state;
 
     const renderEvents = filteredEvents.map(event => (
-      <li key={event.name}>{event.name} - {event.language} - {event.location} - {event.dateTime}</li>
+      <EventCard key={event.name} event={event} />
     ));
 
     return (
@@ -95,7 +102,7 @@ class Filter extends React.Component {
         {/* Implement date & time filtering */}
         {/* Example: Date & Time filter input or dropdown */}
 
-        <p>{renderEvents}</p>
+        <p style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '20px' }}>{renderEvents}</p>
         
       </div>
     );
@@ -104,3 +111,6 @@ class Filter extends React.Component {
 
 
 export default Filter;
+
+
+
