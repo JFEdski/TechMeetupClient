@@ -50,9 +50,9 @@ export default EventPage;
 
 
 
-function Event() {
- 
-}
+// function Event() {
 
-export default Event;
+// }
+
+// export default Event;
 

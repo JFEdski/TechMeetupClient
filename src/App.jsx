@@ -11,7 +11,7 @@ import Home from "./components/Home";
 import Event from './components/event/EventPage';
 import Filter from './components/filter/Filter';
 
-import Filter from "./components/filter/Filter";
+// import Filter from "./components/filter/Filter";
 import EventDetails from "./components/event/EventDetails";
 
 // import Explore from './components/Explore';
@@ -31,14 +31,14 @@ function App() {
 
           <Route path="/filter" element={<Filter />} />
           <Route path="/create" element={<CreateEvent />} />
+          <Route path="/create" element={<Event />} />
+          <Route path="/details/:id" element={<EventDetails />} />
         </Routes>
         {/* <EventMap /> */}
 
-          <Route path="/create" element={<Event />} />
-        </Routes>
 
       </BrowserRouter>
-    </div>
+    </div >
   );
 }
 
