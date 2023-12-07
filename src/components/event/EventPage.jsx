@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css"
 // import CreateEvent from "./CreateEvent";
@@ -46,3 +47,12 @@ function EventPage() {
 }
 
 export default EventPage;
+
+
+
+function Event() {
+ 
+}
+
+export default Event;
+
