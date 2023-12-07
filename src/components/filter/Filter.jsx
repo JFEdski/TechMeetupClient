@@ -1,30 +1,36 @@
 import React from 'react';
 import EventCard from '../event/EventCard';
+//import EventMap from '../map/EventMap';
+
 
 const events = [
   {
     name: "Event 1",
     language: "JavaScript",
     location: "New York",
-    dateTime: "2023-12-10T08:00:00"
+    dateTime: "2023-12-10T08:00:00",
+    description:"description"
   },
   {
     name: "Event 2",
     language: "Python",
     location: "San Francisco",
-    dateTime: "2023-12-15T10:30:00"
+    dateTime: "2023-12-15T10:30:00",
+    description:"description"
   },
   {
     name: "Event 3",
     language: "JavaScript",
     location: "London",
-    dateTime: "2023-12-20T09:00:00"
+    dateTime: "2023-12-20T09:00:00",
+    description: "description"
   },
   {
     name: "Event 4",
     language: "JavaScript",
     location: "Quebec",
-    dateTime: "2023-12-20T09:00:00"
+    dateTime: "2023-12-20T09:00:00",
+    description: "description"
   }
   // Add more events here...
 ];

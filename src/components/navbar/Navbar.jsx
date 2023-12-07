@@ -24,7 +24,7 @@ const Nav = () => {
             <Link to="/event" className="nav-link">Events</Link>
 
             <Link to="/create" className="nav-link">Create Event</Link>
-            <Link to="/filter" className="nav-link">Find Events</Link>
+        
 
 
 
