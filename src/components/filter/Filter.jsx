@@ -80,12 +80,13 @@ class Filter extends React.Component {
     const { filteredEvents } = this.state;
 
     const renderEvents = filteredEvents.map(event => (
-
-      <EventCard key={event.name} event={event} />
-
-      <li key={event.name}>{event.name} - {event.language} - {event.location} - {event.dateTime}</li>
-
-    ));
+      <div key={event.name}>
+        <EventCard key={`card-${event.name}`} event={event} />
+        <li key={`details-${event.name}`}>
+          {event.name} - {event.language} - {event.location} - {event.dateTime}
+        </li>
+      </div>
+    ));    
 
     return (
       <div>
