@@ -28,10 +28,6 @@ const Nav = () => {
 
             <Link to="/filter" className="nav-link">Find Events</Link>
 
-        
-
-
-
 
         </nav>
     )
