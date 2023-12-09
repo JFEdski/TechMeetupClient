@@ -1,10 +1,11 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
-import CreateEvent from "./components/event/CreateEvent";
+// import CreateEvent from "./components/event/CreateEvent";
 import Login from "./components/auth/login/Login";
 import Signup from "./components/auth/signup/Signup";
 import Home from "./components/Home";
+import EventCreationForm from './components/event/EventCreationForm';
 
 // import EventMap from "./components/map/EventMap";
 
@@ -29,9 +30,8 @@ function App() {
           {/* <Route path="/event" element={<Filter />} /> */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-
+          <Route path="/create" element={<EventCreationForm />} />
           <Route path="/filter" element={<Filter />} />
-          <Route path="/create" element={<CreateEvent />} />
           <Route path="/eventPage" element={<EventPage />} />
           <Route path="/details/:id" element={<EventDetails />} />
         </Routes>

@@ -31,7 +31,7 @@ function Login({ setToken }) {
         const results = await response.json();
         console.log(response.status);
         console.log(results);
-        setToken(results.token, results.user._id);
+        // setToken(results.token, results.user._id);
         if (response.status === 200) {
             if (results.user && results.user._id) {
                 setToken(results.token, results.user._id);
