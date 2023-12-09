@@ -37,6 +37,7 @@ const events = [
   }
 ];
 
+
 class Filter extends React.Component {
   constructor() {
     super();
@@ -82,11 +83,8 @@ class Filter extends React.Component {
     const renderEvents = filteredEvents.map(event => (
       <div key={event.name}>
         <EventCard key={`card-${event.name}`} event={event} />
-        <li key={`details-${event.name}`}>
-          {event.name} - {event.language} - {event.location} - {event.dateTime}
-        </li>
       </div>
-    ));    
+    ));
 
     return (
       <div>
@@ -118,8 +116,7 @@ class Filter extends React.Component {
 
         <p style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '20px' }}>{renderEvents}</p>
 
-        <p>{renderEvents}</p>
-
+      
         
       </div>
     );
@@ -128,5 +125,80 @@ class Filter extends React.Component {
 
 
 export default Filter;
+
+
+
+
+
+// class Filter extends React.Component {
+//   constructor() {
+//     super();
+//     this.state = {
+//       filteredEvents: [],
+//       languageFilter: "All",
+//       locationFilter: "All",
+//       events: [] // To store fetched events
+//     };
+//   }
+
+//   componentDidMount() {
+//     // Fetch events from your API when the component mounts
+//     fetch('http://localhost:4000/events/event') 
+//       .then(response => response.json())
+//       .then(data => {
+//         this.setState({ events: data, filteredEvents: data });
+//       })
+//       .catch(error => console.error('Error fetching events:', error));
+//   }
+
+//   handleFilter = (filterType, value) => {
+//     const { events } = this.state;
+
+//     let filteredEvents = events;
+
+//     if (filterType === "category") {
+//       this.setState({ languageFilter: value });
+//       if (value !== "All") {
+//         filteredEvents = events.filter(event => event.language === value);
+//       }
+//     } else if (filterType === "location") {
+//       this.setState({ locationFilter: value });
+//       if (value !== "All") {
+//         filteredEvents = events.filter(event => event.location === value);
+//       }
+//     }
+    
+
+//     this.setState({ filteredEvents });
+//   };
+
+//   render() {
+//     const { filteredEvents } = this.state;
+
+//     const renderEvents = filteredEvents.map(event => (
+//       <div key={event.name}>
+//         <EventCard key={`card-${event.name}`} event={event} />
+//       </div>
+//     ));
+
+//     return (
+//       <div>
+//         <select onChange={e => this.handleFilter("language", e.target.value)}>
+//           <option value="All">All Languages</option>
+//           <option value="Python">Python</option>
+//           <option value="JavaScript">JavaScript</option>
+//         </select>
+
+//         {/* Add other select elements for different filters (e.g., name, location, dateTime) */}
+        
+//         <p style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '20px' }}>
+//           {renderEvents}
+//         </p>
+//       </div>
+//     );
+//   }
+// }
+
+// export default Filter;
 
 
