@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Form } from "react-bootstrap";
-
 import { useNavigate } from "react-router-dom";
 
 
 
-function Login(setToken) {
+
+function Login({ setToken }) {
 
 
     const navigate = useNavigate();
@@ -35,7 +35,7 @@ function Login(setToken) {
         if (response.status === 200) {
             if (results.user && results.user._id) {
                 setToken(results.token, results.user._id);
-                navigate('/signup');
+                navigate('/');
             }
 
             else {
