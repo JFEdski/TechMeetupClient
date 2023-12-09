@@ -17,11 +17,10 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/event" element={<Filter />} /> */}
+          <Route path="/event" element={<Filter />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/create" element={<EventCreationForm />} />
-          <Route path="/filter" element={<Filter />} />
           <Route path="/eventPage" element={<EventPage />} />
           {/* <Route path="/details/:id" element={<EventDetails />} /> */}
 
