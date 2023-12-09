@@ -14,7 +14,6 @@ import Home from "./components/Home";
 
 import Filter from './components/filter/Filter';
 import EventCreationForm from './components/event/EventCreationForm';
-import Filter from "./components/filter/Filter";
 // import Explore from './components/Explore';
 
 import "./App.css";
@@ -27,7 +26,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/event" element={<Filter />} /> */}
+          <Route path="/event" element={<Filter />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/create" element={<EventCreationForm />} />
@@ -35,10 +34,10 @@ function App() {
           
 
 
-          <Route path="/filter" element={<Filter />} />
-//           <Route path="/create" element={<CreateEvent />} />
+          {/* <Route path="/filter" element={<Filter />} /> */}
+          {/* <Route path="/create" element={<CreateEvent />} /> */}
           <Route path="/eventPage" element={<EventPage />} />
-          <Route path="/details/:id" element={<EventDetails />} />
+          {/* <Route path="/details/:id" element={<EventDetails />} /> */}
 
 
         </Routes>
