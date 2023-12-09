@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
-import FilterModal from '../filter/FilterModal';
+import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 
 const EventCard = ({ event }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    // Fetch event data from your backend when the component mounts
+    fetch('http://localhost:4000/events/event')
+      .then(response => response.json())
+      .then(data => setEvents(data))
+      .catch(error => console.error('Error fetching events:', error));
+  }, []);
 
   return(
     <div className="event-container">
@@ -19,7 +27,7 @@ const EventCard = ({ event }) => {
             <p className="event-title">{event.name}</p>
             <div className="separator"></div>
             <p className="event-info">{event.location}</p>
-            <p className="price">Free</p>
+            {/* <p className="price">Free</p> */}
 
             <div className="additional-info">
               <p className="event-info">
@@ -36,31 +44,10 @@ const EventCard = ({ event }) => {
             </div>
           </div>
 
-          <button className="action" onClick={FilterModal()}>Register</button>
+          <Link to={`/events/event/${event.id}`}>
+          <button className="action">Register</button>
+          </Link>
 
-          {FilterModal(true) && (
-            <div className="modal">
-              <div className="modal-content">
-                <span className="close" onClick={FilterModal()}>&times;</span>
-                <h2>Register for Event</h2>
-                <p>Please log in or sign up to register for the event</p>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <button>Login</button>
-                <button>Sign Up</button>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </div>

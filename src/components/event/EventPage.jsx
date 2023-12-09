@@ -44,7 +44,7 @@ function EventPage() {
         </div>
     );
 
-}
+
 
 export default EventPage;
 
