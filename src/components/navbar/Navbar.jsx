@@ -23,9 +23,10 @@ const Nav = () => {
 
             <Link to="/event" className="nav-link">Events</Link>
 
+            {/* Took the create the events from the navbar for now since a user is the only one able to create the a event */}
             <Link to="/create" className="nav-link">Create Event</Link>
-        
 
+            <Link to="/filter" className="nav-link">Find Events</Link>
 
 
         </nav>
