@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
+=======
+
+//import React, { useState } from "react";
+>>>>>>> d66cba7d305b27220d07230aa1c34440a9151089
 import "bootstrap/dist/css/bootstrap.min.css"
 // import CreateEvent from "./CreateEvent";
 
@@ -44,7 +49,7 @@ function EventPage() {
     );
 };
 
-
+}
 
 export default EventPage;
 
