@@ -5,6 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 
 function EventPage() {
+
+
     const events = [{
         title: "Event 1",
         description: "Description of event 1",

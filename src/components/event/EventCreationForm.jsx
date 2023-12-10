@@ -8,7 +8,7 @@ class EventCreationForm extends Component {
       eventLocation: '',
       dateTime: '',
       description: '',
-      categories: {
+      category: {
         JavaScript: false,
         Python: false,
         Java: false,
@@ -22,8 +22,8 @@ class EventCreationForm extends Component {
 
     if (type === 'checkbox') {
       this.setState(prevState => ({
-        categories: {
-          ...prevState.categories,
+        category: {
+          ...prevState.category,
           [name]: checked,
         }
       }));
@@ -34,19 +34,19 @@ class EventCreationForm extends Component {
 
   handleSubmit = async event => {
     event.preventDefault();
-  
+
     // Extract form data from the state
-    const { eventName, location, date, description, categories } = this.state;
-  
+    const { eventName, eventLocation, dateTime, description, category } = this.state;
+
     // Construct an event object
     const newEvent = {
       name: eventName,
-      location,
-      date,
-      description,
-      category: Object.keys(categories).filter(lang => categories[lang]),
+      location: eventLocation,
+      dateTime: dateTime,
+      description: description,
+      category: category
     };
-  
+
     try {
       // Make an API request to create the event
       const response = await fetch('http://localhost:4000/events/event', {
@@ -56,11 +56,18 @@ class EventCreationForm extends Component {
         },
         body: JSON.stringify(newEvent),
       });
-  
+
       if (response.ok) {
         // Event created successfully
         console.log('Event created successfully!');
         // Optionally, reset the form fields or do something else on success
+        this.setState({
+          eventName: '',
+          eventLocation: '',
+          dateTime: '',
+          description: '',
+          category: '',
+        })
       } else {
         console.error('Failed to create event.');
       }
@@ -70,7 +77,7 @@ class EventCreationForm extends Component {
   };
 
   render() {
-    const { eventName, eventLocation, dateTime, description, categories } = this.state;
+    const { eventName, eventLocation, dateTime, description, category } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -83,7 +90,7 @@ class EventCreationForm extends Component {
             onChange={this.handleInputChange}
           />
         </label>
-        <br/>
+        <br />
 
         <label>
           Event Location:
@@ -94,7 +101,7 @@ class EventCreationForm extends Component {
             onChange={this.handleInputChange}
           />
         </label>
-        <br/>
+        <br />
 
         <label>
           Date and Time:
@@ -105,7 +112,7 @@ class EventCreationForm extends Component {
             onChange={this.handleInputChange}
           />
         </label>
-        <br/>
+        <br />
 
         <label>
           Description:
@@ -115,9 +122,19 @@ class EventCreationForm extends Component {
             onChange={this.handleInputChange}
           />
         </label>
-        <br/>
+        <br />
 
         <label>
+          Category:
+          <input
+            type="text"
+            name="category"
+            value={category}
+            onChange={this.handleInputChange}
+          />
+        </label>
+
+        {/* <label>
           Categories:
           <label>
             <input
@@ -147,8 +164,8 @@ class EventCreationForm extends Component {
             Java
           </label>
           {/* Add more checkboxes for other languages */}
-        </label>
-        <br/>
+        {/* </label> */}
+        <br />
 
         <button type="submit">Create Event</button>
       </form>
