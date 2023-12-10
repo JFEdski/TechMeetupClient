@@ -6,7 +6,7 @@ class EventCreationForm extends Component {
     this.state = {
       eventName: '',
       eventLocation: '',
-      dateTime: '',
+      date: '',
       description: '',
       category: {
         JavaScript: false,
@@ -36,17 +36,17 @@ class EventCreationForm extends Component {
     event.preventDefault();
 
     // Extract form data from the state
-    const { eventName, eventLocation, dateTime, description, category } = this.state;
+    const { eventName, eventLocation, date, description, category } = this.state;
 
     // Construct an event object
     const newEvent = {
       name: eventName,
       location: eventLocation,
-      dateTime: dateTime,
+      date: date,
       description: description,
       category: category
     };
-
+    console.log(date)
     try {
       // Make an API request to create the event
       const response = await fetch('http://localhost:4000/events/event', {
@@ -64,7 +64,7 @@ class EventCreationForm extends Component {
         this.setState({
           eventName: '',
           eventLocation: '',
-          dateTime: '',
+          date: '',
           description: '',
           category: '',
         })
@@ -77,7 +77,7 @@ class EventCreationForm extends Component {
   };
 
   render() {
-    const { eventName, eventLocation, dateTime, description, category } = this.state;
+    const { eventName, eventLocation, date, description, category } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -108,7 +108,7 @@ class EventCreationForm extends Component {
           <input
             type="datetime-local"
             name="dateTime"
-            value={dateTime}
+            value={date}
             onChange={this.handleInputChange}
           />
         </label>
@@ -174,3 +174,6 @@ class EventCreationForm extends Component {
 }
 
 export default EventCreationForm;
+
+
+
