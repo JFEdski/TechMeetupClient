@@ -2,18 +2,43 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
+// import CreateEvent from "./components/event/CreateEvent";
 import Login from "./components/auth/login/Login";
 import Signup from "./components/auth/signup/Signup";
 import Home from "./components/Home";
-import Filter from './components/filter/Filter';
 import EventCreationForm from './components/event/EventCreationForm';
-import EventDetails from "./components/event/EventDetails";
-// import Explore from './components/Explore';
-
+import Filter from './components/filter/Filter';
 import "./App.css";
 import EventPage from "./components/event/EventPage";
 
+import { useState, useEffect } from "react";
+
+
 function App() {
+
+  const [token, setToken] = useState('asdf');
+  // const [user, setUser] = useState('');
+
+  useEffect(() => {
+    setToken(localStorage.token);
+    // setUser(localStorage.user);
+  },
+    []);
+
+  function updateToken(newToken, newUser) {
+    setToken(newToken);
+    localStorage.token = newToken;
+    // setUser(newUser);
+    localStorage.user = newUser;
+  }
+  //Add once navbar has the
+  // function clearToken() {
+  // 	setToken('');
+  // 	localStorage.removeItem('token');
+  // }
+
+  console.log(token)
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -21,8 +46,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/event" element={<Filter />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login setToken={updateToken} />} />
+          <Route path="/signup" element={<Signup setToken={updateToken} />} />
           <Route path="/create" element={<EventCreationForm />} />
 
           
@@ -31,7 +56,7 @@ function App() {
           {/* <Route path="/filter" element={<Filter />} /> */}
           {/* <Route path="/create" element={<CreateEvent />} /> */}
           <Route path="/eventPage" element={<EventPage />} />
-          <Route path="/event/:id" element={<EventDetails />} />
+          {/* <Route path="/event/:id" element={<EventDetails />} /> */}
 
 
         </Routes>

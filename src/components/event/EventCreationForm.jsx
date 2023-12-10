@@ -1,159 +1,101 @@
-import React, { Component } from 'react';
 
-class EventCreationForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      eventName: '',
-      eventLocation: '',
-      dateTime: '',
-      description: '',
-      categories: {
-        JavaScript: false,
-        Python: false,
-        Java: false,
-        // Add other languages eventually
-      }
-    };
-  }
+import React, { useState } from "react";
+//import { Link } from "react-router-dom";
+import { Form } from "react-bootstrap";
+//import { useNavigate } from "react-router-dom";
 
-  handleInputChange = event => {
-    const { name, value, type, checked } = event.target;
 
-    if (type === 'checkbox') {
-      this.setState(prevState => ({
-        categories: {
-          ...prevState.categories,
-          [name]: checked,
-        }
-      }));
+function EventCreationForm(){
+  //const navigate = useNavigate();
+
+  const [eventName, setEventName] = useState("");
+  const [date, setDate] = useState("");
+  const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
+  const [location, setLocation] = useState("");
+  const [time, setTime] = useState("");
+  
+  async function createEvent(e){
+    e.preventDefault();
+    
+    const response = await fetch("http://localhost:4000/events/event", {
+      headers: new Headers({
+        'Content-type': 'application/json'
+      }),
+      method: "POST",
+      body: JSON.stringify({
+        eventName,
+        date,
+        description,
+        category,
+        location,
+      })
+    });
+    
+    //const results = await response.json();
+    
+    if (response.status === 200) {
+      console.log("Successfully created event!")
     } else {
-      this.setState({ [name]: value });
+      console.error("Failed to create an event")
     }
+    
   };
-
-  handleSubmit = async event => {
-    event.preventDefault();
-  
-    // Extract form data from the state
-    const { eventName, location, date, description, categories } = this.state;
-  
-    // Construct an event object
-    const newEvent = {
-      name: eventName,
-      location,
-      date,
-      description,
-      category: Object.keys(categories).filter(lang => categories[lang]),
-    };
-  
-    try {
-      // Make an API request to create the event
-      const response = await fetch('http://localhost:4000/events/event', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newEvent),
-      });
-  
-      if (response.ok) {
-        // Event created successfully
-        console.log('Event created successfully!');
-        // Optionally, reset the form fields or do something else on success
-      } else {
-        console.error('Failed to create event.');
-      }
-    } catch (error) {
-      console.error('Error creating event:', error);
-    }
-  };
-
-  render() {
-    const { eventName, eventLocation, dateTime, description, categories } = this.state;
-
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Event Name:
-          <input
-            type="text"
-            name="eventName"
-            value={eventName}
-            onChange={this.handleInputChange}
+    return(
+      <Form onSubmit={createEvent}>
+      <Form.Group controlId="eventName">
+        <Form.Label>Event Name</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter event name"
+          value={eventName}
+          onChange={(e) => setEventName(e.target.value)}
           />
-        </label>
-        <br/>
-
-        <label>
-          Event Location:
-          <input
-            type="text"
-            name="eventLocation"
-            value={eventLocation}
-            onChange={this.handleInputChange}
+      </Form.Group>
+      <br/>
+      <Form.Label>Location</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter location"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
           />
-        </label>
+      <br/>
+      <Form.Label>Date</Form.Label>
+        <Form.Control
+          type="Date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+        />
+         <Form.Label>Time</Form.Label>
+        <Form.Control
+          type="Time"
+          value={time}
+          onChange={(e) => setTime(e.target.value)}
+        />
         <br/>
-
-        <label>
-          Date and Time:
-          <input
-            type="datetime-local"
-            name="dateTime"
-            value={dateTime}
-            onChange={this.handleInputChange}
-          />
-        </label>
+        <Form.Label>Description</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
         <br/>
+        <Form.Label>Category</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter category"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        />
+       
 
-        <label>
-          Description:
-          <textarea
-            name="description"
-            value={description}
-            onChange={this.handleInputChange}
-          />
-        </label>
-        <br/>
-
-        <label>
-          Categories:
-          <label>
-            <input
-              type="checkbox"
-              name="JavaScript"
-              checked={categories.JavaScript}
-              onChange={this.handleInputChange}
-            />
-            JavaScript
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="Python"
-              checked={categories.Python}
-              onChange={this.handleInputChange}
-            />
-            Python
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="Java"
-              checked={categories.Java}
-              onChange={this.handleInputChange}
-            />
-            Java
-          </label>
-          {/* Add more checkboxes for other languages */}
-        </label>
-        <br/>
-
-        <button type="submit">Create Event</button>
-      </form>
-    );
-  }
+      <button variant="primary" type="submit">
+        Create Event
+      </button>
+    </Form>
+  )
 }
 
 export default EventCreationForm;
