@@ -1,17 +1,20 @@
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
+import EventDetails from './EventDetails';
 
 const EventCard = ({ event }) => {
 
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
+    console.log("The events:", events)
     // Fetch event data from your backend when the component mounts
-    fetch('http://localhost:4000/events/event')
+    fetch('http://localhost:4000/events/list')
       .then(response => response.json())
       .then(data => setEvents(data))
       .catch(error => console.error('Error fetching events:', error));
-  }, []);
+  }, [events]);
 
   return(
     <div className="event-container">
@@ -24,8 +27,8 @@ const EventCard = ({ event }) => {
           <div className="overlay"></div>
 
           <div className="event-info">
-            <p className="event-title">{event.name}</p>
             <div className="separator"></div>
+            <p className="event-title">{event.name}</p>
             <p className="event-info">{event.location}</p>
             {/* <p className="price">Free</p> */}
 
@@ -44,8 +47,8 @@ const EventCard = ({ event }) => {
             </div>
           </div>
 
-          <Link to={`/events/event/${event.id}`}>
-          <button className="action">Register</button>
+          <Link to={EventDetails}>
+          <button className="action" onClick={EventDetails}>Register</button>
           </Link>
 
         </div>
