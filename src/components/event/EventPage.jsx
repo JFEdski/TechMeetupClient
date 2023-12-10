@@ -1,10 +1,12 @@
 
-import React, { useState } from "react";
+//import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css"
 // import CreateEvent from "./CreateEvent";
 
 
 function EventPage() {
+
+
     const events = [{
         title: "Event 1",
         description: "Description of event 1",
