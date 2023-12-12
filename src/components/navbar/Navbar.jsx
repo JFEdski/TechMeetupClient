@@ -22,7 +22,7 @@ const Nav = ({ token, clearToken }) => {
                 ?
             <Link to="/auth" className="nav-link">Login/Signup</Link>
             :
-            <Link onClick={clearToken} to="/">Log Out</Link>
+            <Link onClick={clearToken} to="/" className="nav-link">Log Out</Link>
             }
             <Link to="/event" className="nav-link">Events</Link>
 
