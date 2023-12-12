@@ -142,4 +142,3 @@ function EventCreationForm({ token }) {
 export default EventCreationForm;
 
 
-

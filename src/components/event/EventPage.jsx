@@ -1,27 +1,36 @@
-
-//import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css"
 // import CreateEvent from "./CreateEvent";
 
 
 function EventPage() {
 
+    const [events, setEvents] = useState([]);
 
-    const events = [{
-        title: "Event 1",
-        description: "Description of event 1",
-        date: "2023-05-01",
-        time: "8:00 AM - 9:00 PM",
-    },
-    {
-        title: "Event 1",
-        description: "Description of event 1",
-        date: "2023-05-01",
-        image: "https://example.com/event1.jpg",
-        time: "8:00 AM - 9:00 PM",
-    },
-    ]
-    console.log('Events Array:', events);
+    useEffect(() => {
+      console.log("The events:", events)
+      // Fetch event data from your backend when the component mounts
+      fetch('http://localhost:4000/events/list')
+        .then(response => response.json())
+        .then(data => setEvents(data))
+        .catch(error => console.error('Error fetching events:', error));
+    }, []);
+
+    // const events = [{
+    //     title: "Event 1",
+    //     description: "Description of event 1",
+    //     date: "2023-05-01",
+    //     time: "8:00 AM - 9:00 PM",
+    // },
+    // {
+    //     title: "Event 1",
+    //     description: "Description of event 1",
+    //     date: "2023-05-01",
+    //     image: "https://example.com/event1.jpg",
+    //     time: "8:00 AM - 9:00 PM",
+    // },
+    // ]
+    // console.log('Events Array:', events);
 
 
     return (
@@ -30,7 +39,7 @@ function EventPage() {
             <div className="card-deck">
                 {events.map((event, index) => (
                     <div key={index} className="card">
-                        <img src={event.image} className="card-img-top" alt={event.title} />
+                        <img src={event.image} className="card-img-top" alt={event.name} />
                         <div className="card-body">
                             <h5 className="card-title">{event.title}</h5>
                             <p className="card-text">{event.description}</p>
@@ -45,16 +54,8 @@ function EventPage() {
             </div>
         </div>
     );
-
-}
+};
 
 export default EventPage;
 
-
-
-// function Event() {
-
-// }
-
-// export default Event;
 
