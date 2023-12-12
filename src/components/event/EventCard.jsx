@@ -13,7 +13,7 @@ const EventCard = ({ event }) => {
       .catch(error => console.error('Error fetching events:', error));
   }, []);
 
-  return(
+  return (
     <div className="event-container">
       <div className="event-item-container">
         <div className="event-img-container">
@@ -45,7 +45,7 @@ const EventCard = ({ event }) => {
           </div>
 
           <Link to={`/events/event/${event.id}`}>
-          <button className="action">Register</button>
+            <button className="action">Register</button>
           </Link>
 
         </div>

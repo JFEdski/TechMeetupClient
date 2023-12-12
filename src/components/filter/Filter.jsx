@@ -11,14 +11,14 @@ const events = [
     language: "JavaScript",
     location: "New York",
     dateTime: "2023-12-10T08:00:00",
-    description:"description"
+    description: "description"
   },
   {
     name: "Event 2",
     language: "Python",
     location: "San Francisco",
     dateTime: "2023-12-15T10:30:00",
-    description:"description"
+    description: "description"
   },
   {
     name: "Event 3",
@@ -70,7 +70,7 @@ class Filter extends React.Component {
       this.setState({ dateTimeFilter: value });
       if (value !== "All") {
         // Implement filtering by date & time logic here
-      // filteredEvents = events.filter(event => compareDates(event.dateTime, value));
+        // filteredEvents = events.filter(event => compareDates(event.dateTime, value));
       }
     }
 
@@ -109,15 +109,15 @@ class Filter extends React.Component {
           <option value="New York">New York</option>
         </select>
 
-        
+
         {/* Implement date & time filtering */}
         {/* Example: Date & Time filter input or dropdown */}
 
 
         <p style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '20px' }}>{renderEvents}</p>
 
-      
-        
+
+
       </div>
     );
   }
@@ -143,7 +143,7 @@ export default Filter;
 
 //   componentDidMount() {
 //     // Fetch events from your API when the component mounts
-//     fetch('http://localhost:4000/events/event') 
+//     fetch('http://localhost:4000/events/event')
 //       .then(response => response.json())
 //       .then(data => {
 //         this.setState({ events: data, filteredEvents: data });
@@ -167,7 +167,7 @@ export default Filter;
 //         filteredEvents = events.filter(event => event.location === value);
 //       }
 //     }
-    
+
 
 //     this.setState({ filteredEvents });
 //   };
@@ -190,7 +190,7 @@ export default Filter;
 //         </select>
 
 //         {/* Add other select elements for different filters (e.g., name, location, dateTime) */}
-        
+
 //         <p style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '20px' }}>
 //           {renderEvents}
 //         </p>
@@ -200,5 +200,4 @@ export default Filter;
 // }
 
 // export default Filter;
-
 

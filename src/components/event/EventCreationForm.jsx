@@ -18,37 +18,7 @@ function EventCreationForm({ token }) {
   const [time, setTime] = useState("");
 
   console.log('TOKEN', token)
-  // async function createEvent(e) {
-  //   e.preventDefault();
 
-  //   const response = await fetch("http://localhost:4000/events/event", {
-  //     headers: new Headers({
-  //       'Content-type': 'application/json',
-  //       'Authorization': token
-  //     }),
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       name,
-  //       date,
-  //       time,
-  //       description,
-  //       category,
-  //       location,
-  //     })
-  //   });
-
-  //   // const results = await response.json();
-
-  //   if (response.status === 200) {
-  //     // if (results.user && results.user._id) {
-  //     //   token(results.user._id);
-  //     // }
-  //     console.log("Successfully created event!")
-  //   } else {
-  //     console.error("Failed to create an event")
-  //   }
-
-  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('keith')
