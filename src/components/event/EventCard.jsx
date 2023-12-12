@@ -14,10 +14,10 @@ const EventCard = ({ event }) => {
       .then(response => response.json())
       .then(data => setEvents(data))
       .catch(error => console.error('Error fetching events:', error));
-  }, [events]);
+  }, []);
 
   return(
-    <div className="event-container">
+    <div className="event-container" to={<EventDetails/>}>
       <div className="event-item-container">
         <div className="event-img-container">
           {/* <img src="./images/img1.jpg" alt="Event image"/> */}

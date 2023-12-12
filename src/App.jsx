@@ -10,6 +10,7 @@ import EventCreationForm from './components/event/EventCreationForm';
 import Filter from './components/filter/Filter';
 import "./App.css";
 import EventPage from "./components/event/EventPage";
+import Auth from "./components/auth/Auth";
 
 import { useState, useEffect } from "react";
 
@@ -31,24 +32,25 @@ function App() {
     // setUser(newUser);
     localStorage.user = newUser;
   }
-  //Add once navbar has the
-  // function clearToken() {
-  // 	setToken('');
-  // 	localStorage.removeItem('token');
-  // }
+  
+  function clearToken() {
+  	setToken('');
+  	localStorage.removeItem('token');
+  }
 
   console.log(token)
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
+        <Navbar token={token} clearToken={clearToken}/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/event" element={<Filter />} />
           <Route path="/login" element={<Login setToken={updateToken} />} />
           <Route path="/signup" element={<Signup setToken={updateToken} />} />
           <Route path="/create" element={<EventCreationForm />} />
+          <Route path="/auth" element={<Auth setToken={updateToken} />} />
 
           
 
