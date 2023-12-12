@@ -51,10 +51,6 @@ function App() {
           <Route path="/signup" element={<Signup setToken={updateToken} />} />
           <Route path="/create" element={<EventCreationForm />} />
           <Route path="/auth" element={<Auth setToken={updateToken} />} />
-
-          
-
-
           {/* <Route path="/filter" element={<Filter />} /> */}
           {/* <Route path="/create" element={<CreateEvent />} /> */}
           <Route path="/eventPage" element={<EventPage />} />
