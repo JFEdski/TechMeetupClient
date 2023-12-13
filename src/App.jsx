@@ -49,7 +49,7 @@ function App() {
           <Route path="/event" element={<Filter />} />
           <Route path="/login" element={<Login setToken={updateToken} />} />
           <Route path="/signup" element={<Signup setToken={updateToken} />} />
-          <Route path="/create" element={<EventCreationForm />} />
+          <Route path="/create" element={<EventCreationForm token={token} />} />
           <Route path="/auth" element={<Auth setToken={updateToken} />} />
           {/* <Route path="/filter" element={<Filter />} /> */}
           {/* <Route path="/create" element={<CreateEvent />} /> */}

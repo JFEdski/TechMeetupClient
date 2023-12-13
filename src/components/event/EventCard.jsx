@@ -4,7 +4,10 @@ import { useNavigate } from 'react-router-dom'
 import EventDetails from './EventDetails';
 
 const EventCard = ({ event }) => {
-
+  useEffect(() => {
+    console.log(event)
+  }, []);
+  
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
