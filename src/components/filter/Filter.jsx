@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import EventCard from "../event/EventCard";
+import { Link } from "react-router-dom";
 
 const Filter = () => {
   const [filteredEvents, setFilteredEvents] = useState([]);
@@ -136,12 +137,17 @@ const Filter = () => {
           gap: "20px",
         }}
       >
-        {filteredEvents.map((event, index) => {
+        {/* {filteredEvents.map((event, index) => {
           console.log({ event })
           return (
             <EventCard event={event} key={index} />
           )
-        })}
+        })} */}
+        {filteredEvents.map((event, index) => (
+          <Link to={`/event/${event._id}`} key={index}>
+            <EventCard event={event} />
+          </Link>
+        ))}
       </div>
 
     </div>
