@@ -1,11 +1,9 @@
-
-//import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css"
 // import CreateEvent from "./CreateEvent";
 
 
 function EventPage() {
-
 
     const events = [{
         title: "Event 1",
@@ -30,7 +28,7 @@ function EventPage() {
             <div className="card-deck">
                 {events.map((event, index) => (
                     <div key={index} className="card">
-                        <img src={event.image} className="card-img-top" alt={event.title} />
+                        <img src={event.image} className="card-img-top" alt={event.name} />
                         <div className="card-body">
                             <h5 className="card-title">{event.title}</h5>
                             <p className="card-text">{event.description}</p>
@@ -45,16 +43,8 @@ function EventPage() {
             </div>
         </div>
     );
-
-}
+};
 
 export default EventPage;
 
-
-
-// function Event() {
-
-// }
-
-// export default Event;
 
