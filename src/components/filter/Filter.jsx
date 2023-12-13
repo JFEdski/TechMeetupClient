@@ -5,38 +5,52 @@ import EventCard from '../event/EventCard';
 
 
 
-const events = [
-  {
-    name: "Event 1",
-    language: "JavaScript",
-    location: "New York",
-    dateTime: "2023-12-10T08:00:00",
-    description:"description"
-  },
-  {
-    name: "Event 2",
-    language: "Python",
-    location: "San Francisco",
-    dateTime: "2023-12-15T10:30:00",
-    description:"description"
-  },
-  {
-    name: "Event 3",
-    language: "JavaScript",
-    location: "London",
-    dateTime: "2023-12-20T09:00:00",
-    description: "description"
-  },
+// const events = [
+//   {
+//     name: "Event 1",
+//     language: "JavaScript",
+//     location: "New York",
+//     dateTime: "2023-12-10T08:00:00",
+//     description:"description"
+//   },
+//   {
+//     name: "Event 2",
+//     language: "Python",
+//     location: "San Francisco",
+//     dateTime: "2023-12-15T10:30:00",
+//     description:"description"
+//   },
+//   {
+//     name: "Event 3",
+//     language: "JavaScript",
+//     location: "London",
+//     dateTime: "2023-12-20T09:00:00",
+//     description: "description"
+//   },
 
-  {
-    name: "Event 4",
-    language: "JavaScript",
-    location: "Quebec",
-    dateTime: "2023-12-20T09:00:00",
-    description: "description"
+//   {
+//     name: "Event 4",
+//     language: "JavaScript",
+//     location: "Quebec",
+//     dateTime: "2023-12-20T09:00:00",
+//     description: "description"
+//   }
+// ];
+
+const url = 'http://localhost:4000/list'
+
+const fetchEvents = async () => {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching events:', error);
+    return [];
   }
-];
+}
 
+const events = fetchEvents();
 
 class Filter extends React.Component {
   constructor() {
