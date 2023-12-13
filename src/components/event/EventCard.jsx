@@ -4,10 +4,11 @@ import { useNavigate } from 'react-router-dom'
 import EventDetails from './EventDetails';
 
 const EventCard = ({ event }) => {
+  const navigate = useNavigate();
   useEffect(() => {
     console.log(event)
-  }, []);
-  
+  }, [event]);
+
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
@@ -19,11 +20,12 @@ const EventCard = ({ event }) => {
       .catch(error => console.error('Error fetching events:', error));
   }, []);
 
-  return(
-    <div className="event-container" to={<EventDetails/>}>
+  return (
+    <div className="event-container" to={<EventDetails />}>
       <div className="event-item-container">
         <div className="event-img-container">
-          {/* <img src="./images/img1.jpg" alt="Event image"/> */}
+          <img src="img\meetup.webp" alt="Event image" />
+
         </div>
 
         <div className="event-body-container">
@@ -49,14 +51,27 @@ const EventCard = ({ event }) => {
               </p>
             </div>
           </div>
+          {/* <Link to={`/event/${event.id}`}>
+            <button className="action">Details</button>
+          </Link> */}
+          {/*
+          <button className="action" onClick={() => navigate(`/eventPage`)}>
+            Register
+          </button> */}
 
-          <Link to={EventDetails}>
-          <button className="action" onClick={EventDetails}>Register</button>
+
+          {/* <Link to={EventDetails}>
+            <button className="action" onClick={() => navigate(EventDetails)}>Register</button>
+          </Link> */}
+          {console.log({ event })}
+          <Link to={`/event/${event._id}`}>
+            <button className="action" onClick={() => navigate(`/event/${event._id}`)}>
+              Register
+            </button>
           </Link>
-
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import EventCard from "../event/EventCard";
+import { Link } from "react-router-dom";
 
 const Filter = () => {
   const [filteredEvents, setFilteredEvents] = useState([]);
@@ -13,11 +14,11 @@ const Filter = () => {
   const [timeOptions, setTimeOptions] = useState([]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:4000/events/list')
+    fetch('http://localhost:4000/events/list')
       .then((response) => response.json())
       .then((data) => {
         //data=data.found
-        console.log({data})
+        console.log({ data })
         setFilteredEvents(data.found);
 
         const categories = Array.from(
@@ -74,7 +75,7 @@ const Filter = () => {
         default:
           break;
       }
-      
+
 
       const updatedFilteredEvents = filteredEvents(filterType, value);
       //setFilteredEvents(updatedFilteredEvents);
@@ -136,12 +137,17 @@ const Filter = () => {
           gap: "20px",
         }}
       >
-        {filteredEvents.map((event, index) => {
-          console.log({event})
+        {/* {filteredEvents.map((event, index) => {
+          console.log({ event })
           return (
-            <EventCard event={event} key={index}/>
+            <EventCard event={event} key={index} />
           )
-        })}
+        })} */}
+        {filteredEvents.map((event, index) => (
+          <Link to={`/event/${event._id}`} key={index}>
+            <EventCard event={event} />
+          </Link>
+        ))}
       </div>
 
     </div>
@@ -239,4 +245,3 @@ export default Filter;
 // }
 
 // export default Filter;
-

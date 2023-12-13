@@ -3,13 +3,13 @@
 import React, { useState } from "react";
 //import { Link } from "react-router-dom";
 import { Form } from "react-bootstrap";
-import { Navigate, useNavigate } from "react-router-dom";
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
 function EventCreationForm({ token }) {
   const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
@@ -19,37 +19,7 @@ function EventCreationForm({ token }) {
   const [time, setTime] = useState("");
 
   console.log('TOKEN', token)
-  // async function createEvent(e) {
-  //   e.preventDefault();
 
-  //   const response = await fetch("http://localhost:4000/events/event", {
-  //     headers: new Headers({
-  //       'Content-type': 'application/json',
-  //       'Authorization': token
-  //     }),
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       name,
-  //       date,
-  //       time,
-  //       description,
-  //       category,
-  //       location,
-  //     })
-  //   });
-
-  //   // const results = await response.json();
-
-  //   if (response.status === 200) {
-  //     // if (results.user && results.user._id) {
-  //     //   token(results.user._id);
-  //     // }
-  //     console.log("Successfully created event!")
-  //   } else {
-  //     console.error("Failed to create an event")
-  //   }
-
-  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('keith')
@@ -73,6 +43,7 @@ function EventCreationForm({ token }) {
       const data = await response.json()
       console.log(data)
       navigate('/event')
+      // navigate('/event')
     } catch (error) {
       console.log(error.message)
 

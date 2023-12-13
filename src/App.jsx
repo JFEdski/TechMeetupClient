@@ -1,6 +1,6 @@
 
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 // import CreateEvent from "./components/event/CreateEvent";
 import Login from "./components/auth/login/Login";
@@ -9,13 +9,16 @@ import Home from "./components/Home";
 import EventCreationForm from './components/event/EventCreationForm';
 import Filter from './components/filter/Filter';
 import "./App.css";
-import EventPage from "./components/event/EventPage";
+// import EventPage from "./components/event/EventPage";
 import Auth from "./components/auth/Auth";
 
 import { useState, useEffect } from "react";
+import EventDetails from "./components/event/EventDetails";
+import EventRegistration from "./components/event/EventRegistration";
 
 
 function App() {
+
 
   const [token, setToken] = useState('asdf');
   // const [user, setUser] = useState('');
@@ -32,10 +35,10 @@ function App() {
     // setUser(newUser);
     localStorage.user = newUser;
   }
-  
+
   function clearToken() {
-  	setToken('');
-  	localStorage.removeItem('token');
+    setToken('');
+    localStorage.removeItem('token');
   }
 
   console.log(token)
@@ -43,7 +46,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar token={token} clearToken={clearToken}/>
+        <Navbar token={token} clearToken={clearToken} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/event" element={<Filter />} />
@@ -53,7 +56,10 @@ function App() {
           <Route path="/auth" element={<Auth setToken={updateToken} />} />
           {/* <Route path="/filter" element={<Filter />} /> */}
           {/* <Route path="/create" element={<CreateEvent />} /> */}
-          <Route path="/eventPage" element={<EventPage />} />
+          {/* <Route path="/eventPage/:id" element={<EventDetails />} /> */}
+          <Route path="/event/:id" element={<EventDetails />} />
+          <Route path="/event/register/:eventId" element={<EventRegistration />} />
+
           {/* <Route path="/event/:id" element={<EventDetails />} /> */}
 
 
