@@ -1,9 +1,5 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
 import EventCard from '../event/EventCard';
-//import EventMap from '../map/EventMap';
-
-
 
 const events = [
   {
@@ -27,7 +23,6 @@ const events = [
     dateTime: "2023-12-20T09:00:00",
     description: "description"
   },
-
   {
     name: "Event 4",
     language: "JavaScript",
@@ -37,96 +32,76 @@ const events = [
   }
 ];
 
+const Filter = () => {
+  const [filteredEvents, setFilteredEvents] = useState(events);
+  const [languageFilter, setLanguageFilter] = useState("All");
+  const [locationFilter, setLocationFilter] = useState("All");
+  const [dateTimeFilter, setDateTimeFilter] = useState("All");
 
-class Filter extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      filteredEvents: [],
-      languageFilter: "All",
-      locationFilter: "All",
-      dateTimeFilter: "All"
-    };
-  }
+  useEffect(() => {
+    setFilteredEvents(events);
+  }, []);
 
-  componentDidMount() {
-    this.setState({ filteredEvents: events });
-  }
-
-  handleFilter = (filterType, value) => {
+  const handleFilter = (filterType, value) => {
     let filteredEvents = events;
 
     if (filterType === "language") {
-      this.setState({ languageFilter: value });
+      setLanguageFilter(value);
       if (value !== "All") {
         filteredEvents = events.filter(event => event.language === value);
       }
     } else if (filterType === "location") {
-      this.setState({ locationFilter: value });
+      setLocationFilter(value);
       if (value !== "All") {
         filteredEvents = events.filter(event => event.location === value);
       }
     } else if (filterType === "dateTime") {
-      this.setState({ dateTimeFilter: value });
+      setDateTimeFilter(value);
       if (value !== "All") {
         // Implement filtering by date & time logic here
         // filteredEvents = events.filter(event => compareDates(event.dateTime, value));
       }
     }
 
-    this.setState({ filteredEvents });
+    setFilteredEvents(filteredEvents);
   };
 
-  render() {
-    const { filteredEvents } = this.state;
+  const renderEvents = filteredEvents.map(event => (
+    <div key={event.name}>
+      <EventCard key={`card-${event.name}`} event={event} />
+    </div>
+  ));
 
-    const renderEvents = filteredEvents.map(event => (
-      <div key={event.name}>
-        <EventCard key={`card-${event.name}`} event={event} />
-      </div>
-    ));
+  return (
+    <div>
+      <select onChange={e => handleFilter("language", e.target.value)}>
+        <option value="All">All Languages</option>
+        <option value="Python">Python</option>
+        <option value="JavaScript">JavaScript</option>
+      </select>
 
-    return (
-      <div>
-        <select onChange={e => this.handleFilter("language", e.target.value)}>
-          <option value="All">All Languages</option>
-          {/* Add options for languages based on available event languages */}
-          <option value="Python">Python</option>
-          <option value="JavaScript">JavaScript</option>
-        </select>
+      <select onChange={e => handleFilter("name", e.target.value)}>
+        <option value="All">All Names</option>
+        {/* Add options for event names based on available event names */}
+        {/* Example: <option value="Event 1">Event 1</option> */}
+      </select>
 
-        <select onChange={e => this.handleFilter("name", e.target.value)}>
-          <option value="All">All Names</option>
-          {/* Add options for event names based on available event names */}
-          {/* Example: <option value="Event 1">Event 1</option> */}
-        </select>
+      <select onChange={e => handleFilter("location", e.target.value)}>
+        <option value="All">All Locations</option>
+        <option value="London">London</option>
+        <option value="San Francisco">San Francisco</option>
+        <option value="New York">New York</option>
+      </select>
 
-        <select onChange={e => this.handleFilter("location", e.target.value)}>
-          <option value="All">All Locations</option>
-          {/* Add options for locations based on available event locations */}
-          <option value="London">London</option>
-          <option value="San Francisco">San Francisco</option>
-          <option value="New York">New York</option>
-        </select>
+      {/* Implement date & time filtering */}
+      {/* Example: Date & Time filter input or dropdown */}
 
-
-        {/* Implement date & time filtering */}
-        {/* Example: Date & Time filter input or dropdown */}
-
-
-        <p style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '20px' }}>{renderEvents}</p>
-
-
-
-      </div>
-    );
-  }
-}
-
+      <p style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '20px' }}>{renderEvents}</p>
+    </div>
+  );
+};
 
 export default Filter;
-
-
 
 
 

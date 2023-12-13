@@ -3,12 +3,12 @@
 import React, { useState } from "react";
 //import { Link } from "react-router-dom";
 import { Form } from "react-bootstrap";
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
 function EventCreationForm({ token }) {
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
@@ -41,6 +41,7 @@ function EventCreationForm({ token }) {
       const response = await fetch(url, requestOptions)
       const data = await response.json()
       console.log(data)
+      navigate('/event')
     } catch (error) {
       console.log(error.message)
 
