@@ -1,13 +1,14 @@
 import React from "react";
 import Nav from "../navbar/Navbar";
 import image from "../../assets/meetup1.jpg"
+import { useParams } from 'react-router-dom'
 
-async function EventDetails({ name, userName, date, description }) {
-  
+function EventDetails({ name, userName, date, description }) {
+  const { id } = useParams();
 
   return (
     <>
-    <div>
+    <div className="container-details">
       <Nav />
       <header className="header-details">
         <h2 className="header-title">{name}</h2>

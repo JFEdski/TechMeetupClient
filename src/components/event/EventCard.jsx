@@ -4,6 +4,12 @@ import { Link } from 'react-router-dom';
 
 const EventCard = ({ event }) => {
 
+  useEffect(() => {
+    console.log(event)
+  }, []);
+  
+  const [events, setEvents] = useState([]);
+
 
 
   return(

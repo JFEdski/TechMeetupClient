@@ -5,32 +5,21 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 function EventPage() {
 
-    const [events, setEvents] = useState([]);
-
-    useEffect(() => {
-      console.log("The events:", events)
-      // Fetch event data from your backend when the component mounts
-      fetch('http://localhost:4000/events/list')
-        .then(response => response.json())
-        .then(data => setEvents(data))
-        .catch(error => console.error('Error fetching events:', error));
-    }, []);
-
-    // const events = [{
-    //     title: "Event 1",
-    //     description: "Description of event 1",
-    //     date: "2023-05-01",
-    //     time: "8:00 AM - 9:00 PM",
-    // },
-    // {
-    //     title: "Event 1",
-    //     description: "Description of event 1",
-    //     date: "2023-05-01",
-    //     image: "https://example.com/event1.jpg",
-    //     time: "8:00 AM - 9:00 PM",
-    // },
-    // ]
-    // console.log('Events Array:', events);
+    const events = [{
+        title: "Event 1",
+        description: "Description of event 1",
+        date: "2023-05-01",
+        time: "8:00 AM - 9:00 PM",
+    },
+    {
+        title: "Event 1",
+        description: "Description of event 1",
+        date: "2023-05-01",
+        image: "https://example.com/event1.jpg",
+        time: "8:00 AM - 9:00 PM",
+    },
+    ]
+    console.log('Events Array:', events);
 
 
     return (

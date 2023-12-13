@@ -16,7 +16,10 @@ const Filter = () => {
     fetch('http://127.0.0.1:4000/events/list')
       .then((response) => response.json())
       .then((data) => {
-        setFilteredEvents(data);
+        //data=data.found
+        console.log({data})
+        setFilteredEvents(data.found);
+
         const categories = Array.from(
           new Set(data.map((event) => event.category))
         );
@@ -52,7 +55,8 @@ const Filter = () => {
         default:
           break;
       }
-      setFilteredEvents(filteredEvents); // Reset events to all when "All" is selected
+      // setFilteredEvents(filteredEvents); // Reset events to all when "All" is selected
+
     } else {
       switch (filterType) {
         case "category":
@@ -71,8 +75,10 @@ const Filter = () => {
           break;
       }
       
-      const updatedFilteredEvents = filterEvents(filterType, value);
-      setFilteredEvents(updatedFilteredEvents);
+
+      const updatedFilteredEvents = filteredEvents(filterType, value);
+      //setFilteredEvents(updatedFilteredEvents);
+
     }
   };
 
@@ -88,7 +94,8 @@ const Filter = () => {
 
   return (
     <div>
-      <select onChange={(e) => handleFilter("category", e.target.value)}>
+      {/* <select onChange={(e) => handleFilter("category", e.target.value)}>
+
         {categoryOptions.map((option, index) => (
           <option key={index} value={option}>
             {option}
@@ -118,9 +125,10 @@ const Filter = () => {
             {option}
           </option>
         ))}
-      </select>
+      </select> */}
 
-      <p
+      <div
+
         style={{
           display: "flex",
           justifyContent: "center",
@@ -128,8 +136,14 @@ const Filter = () => {
           gap: "20px",
         }}
       >
-        {renderEvents}
-      </p>
+        {filteredEvents.map((event, index) => {
+          console.log({event})
+          return (
+            <EventCard event={event} key={index}/>
+          )
+        })}
+      </div>
+
     </div>
   );
 };
@@ -225,3 +239,4 @@ export default Filter;
 // }
 
 // export default Filter;
+
