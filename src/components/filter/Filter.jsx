@@ -19,6 +19,7 @@ const Filter = () => {
         //data=data.found
         console.log({data})
         setFilteredEvents(data.found);
+
         const categories = Array.from(
           new Set(data.map((event) => event.category))
         );
@@ -55,6 +56,7 @@ const Filter = () => {
           break;
       }
       // setFilteredEvents(filteredEvents); // Reset events to all when "All" is selected
+
     } else {
       switch (filterType) {
         case "category":
@@ -73,8 +75,10 @@ const Filter = () => {
           break;
       }
       
+
       const updatedFilteredEvents = filteredEvents(filterType, value);
       //setFilteredEvents(updatedFilteredEvents);
+
     }
   };
 
@@ -91,6 +95,7 @@ const Filter = () => {
   return (
     <div>
       {/* <select onChange={(e) => handleFilter("category", e.target.value)}>
+
         {categoryOptions.map((option, index) => (
           <option key={index} value={option}>
             {option}
@@ -123,6 +128,7 @@ const Filter = () => {
       </select> */}
 
       <div
+
         style={{
           display: "flex",
           justifyContent: "center",
@@ -137,6 +143,7 @@ const Filter = () => {
           )
         })}
       </div>
+
     </div>
   );
 };
@@ -232,3 +239,4 @@ export default Filter;
 // }
 
 // export default Filter;
+
