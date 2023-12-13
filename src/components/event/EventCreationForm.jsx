@@ -43,7 +43,7 @@ function EventCreationForm({ token }) {
       const data = await response.json()
       console.log(data)
       navigate('/event')
-      navigate('/event')
+      // navigate('/event')
     } catch (error) {
       console.log(error.message)
 
